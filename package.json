@@ -1,4 +1,5 @@
 {
+  "homepage": "https://onebrov.github.io/game-wheel-frontend",
   "name": "game-wheel",
   "version": "0.1.0",
   "private": true,
@@ -20,6 +21,7 @@
     "@types/react-window": "^1.8.5",
     "@types/redux": "^3.6.0",
     "axios": "^0.26.0",
+    "gh-pages": "^3.2.3",
     "json2mq": "^0.2.0",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
@@ -34,6 +36,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
