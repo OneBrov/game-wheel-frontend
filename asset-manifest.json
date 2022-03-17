@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/game-wheel-frontend/static/css/main.d7780806.css",
+    "main.js": "/game-wheel-frontend/static/js/main.f3ee0572.js",
+    "static/js/787.cf45f5d0.chunk.js": "/game-wheel-frontend/static/js/787.cf45f5d0.chunk.js",
+    "static/media/person.svg": "/game-wheel-frontend/static/media/person.9e67bf182fc5a8acf12f68da6e40ad40.svg",
+    "index.html": "/game-wheel-frontend/index.html",
+    "static/media/history.svg": "/game-wheel-frontend/static/media/history.a84dcd12fc6904115938bb467495a9e4.svg",
+    "static/media/library.svg": "/game-wheel-frontend/static/media/library.95558b34e2eca6efa2413f7b1a498de5.svg",
+    "static/media/wheel.svg": "/game-wheel-frontend/static/media/wheel.46536f0b7a96a0b113b60ce90e289962.svg",
+    "main.d7780806.css.map": "/game-wheel-frontend/static/css/main.d7780806.css.map",
+    "main.f3ee0572.js.map": "/game-wheel-frontend/static/js/main.f3ee0572.js.map",
+    "787.cf45f5d0.chunk.js.map": "/game-wheel-frontend/static/js/787.cf45f5d0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7780806.css",
+    "static/js/main.f3ee0572.js"
+  ]
+}
