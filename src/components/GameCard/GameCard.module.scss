@@ -1,0 +1,37 @@
+.gameCard {
+  &:hover + .gameInfoAnimation {
+    display: block;
+
+  }
+}
+
+
+.gameInfoAnimation {
+  & > div {
+    &:hover {
+      display: block;
+    }
+  }
+  animation: topDownAppearance 0.3s ease-in-out;
+  display: none;
+  z-index: 3;
+  &:hover {
+    display: block;
+  }
+}
+
+@keyframes topDownAppearance {
+  0% {
+
+    transform: translateY(-200px);
+    // margin-top: -100%;
+    opacity: 0.4;
+  } 
+  100% {
+    transform: translateY(00%);
+    opacity: 1;
+
+  }
+}
+
+
