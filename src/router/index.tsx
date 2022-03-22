@@ -9,7 +9,8 @@ import { WheelPage } from '../pages/WheelPage';
 
 export const AppRouter = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      {console.log(process.env.PUBLIC_URL)}
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/wheel"   element={<WheelPage />} />
