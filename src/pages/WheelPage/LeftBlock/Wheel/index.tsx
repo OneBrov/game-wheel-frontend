@@ -181,6 +181,3 @@ const Wheel:React.FC<WheelProps> = ({
 
 export const MemoWheel = React.memo(Wheel);
 
-function json2mq(arg0: { minWidth: number; }): string | ((theme: unknown) => string) {
-  throw new Error('Function not implemented.');
-}

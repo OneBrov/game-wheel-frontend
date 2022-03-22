@@ -19,7 +19,7 @@ export const Footer:React.FC = () => {
           </Typography>
         </Typography>
         <Link 
-          href='https://github.com/OneBrov/service-for-online-lectures'
+          href='https://github.com/OneBrov/game-wheel-frontend'
           sx={{
             marginLeft: '50px'
           }}

@@ -15,9 +15,13 @@ import styles from './LeftBlock.module.scss';
 import { useDebouncedEffect } from '../../../hooks/useDebounceEffect';
 import GamesHistoryService from '../../../utils/api/services/GamesHistoryService';
 import { useAuthContext } from '../../../providers/AuthProvider';
+import { WheelSkeleton } from './WheelSkeleton';
 
 
 export const LeftBlock = () => {
+
+  const [isSpinning, setIsSpinning] = React.useState<boolean>(false);
+  const [wheelIsLoading, setWheelIsLoading] = React.useState<boolean>(true);  
   const gamesQueryCtx = useGamesQueryContext();
   const wheelRef = React.useRef<HTMLDivElement>(null);
   const { isAuth } = useAuthContext();
@@ -32,7 +36,7 @@ export const LeftBlock = () => {
       dispatch(deleteWinner());
       dispatch(resetWheelRotate());
       dispatch(setGames([]));
-    }
+    };
   }, []);
 
   React.useEffect(() => {
@@ -54,17 +58,24 @@ export const LeftBlock = () => {
     }
   }, [wheelRotate]);
 
+
+  //after $rotateDuration get winner game, and unlock spin button
   useDebouncedEffect(()=>{
+    setIsSpinning(false);
     dispatch(setWinnerByDegree(wheelRotate));
   }, [wheelRotate], rotateDuration);
 
   const loadGames = async () => {
+    setWheelIsLoading(true);
     const { data } = await GamesService.getRandomGames(gamesQueryCtx?.params || '');
     dispatch(resetWheelRotate());
     dispatch(setGames(data));
+    setWheelIsLoading(false);
   };
 
   const handleClickSpin = async () => {
+    setIsSpinning(true);
+
     const max = 5040;
     const min = 3600;
     rotateWheelToDefault();
@@ -96,37 +107,44 @@ export const LeftBlock = () => {
         className={styles.wheel}
         sx={{
           position: 'relative',
+          overflow: 'hidden'
         }}
        
       >
-        <Box ref={wheelRef}  style={{ 
-          
-        }}  sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center'
-        }}>
-          <MemoWheel games={games}/>
-          <Button 
-            onClick={handleClickSpin}
-            variant='contained'
-            sx={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              borderRadius: '50px',
-              height: '100px',
-              width: '100px',
-              border: '2px solid white'
-            }} 
-          > 
-            <Typography 
-              color='white'
-            >
+        <Box ref={wheelRef}   
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}>
+          {wheelIsLoading 
+            ? <WheelSkeleton />
+            : <>
+              <MemoWheel games={games}/>
+              <Button 
+                className={styles.spinButton}
+                onClick={handleClickSpin}
+                variant='contained'
+                disabled={isSpinning}
+                sx={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  borderRadius: '50px',
+                  height: '100px',
+                  width: '100px',
+                  border: '2px solid white'
+                }} 
+              > 
+                <Typography 
+                  color='white'
+                >
               Крутить
-            </Typography>
-          </Button>
+                </Typography>
+              </Button>
+            </>
+          }
         </Box>
         <Box className={styles.winnerPointer}/>   
       </Box>
